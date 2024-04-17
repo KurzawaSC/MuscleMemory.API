@@ -1,0 +1,6 @@
+@MuscleMemory.API_HostAddress = https://localhost:7002
+
+
+GET {{MuscleMemory.API_HostAddress}}/api/exercises
+
+###

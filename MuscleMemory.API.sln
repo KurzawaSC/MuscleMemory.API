@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{327391C1-1863-4E6A-9E9E-58B1FC986555}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.API", "src\MuscleMemory.API\MuscleMemory.API.csproj", "{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Application", "src\MuscleMemory.Application\MuscleMemory.Application.csproj", "{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Domain", "src\MuscleMemory.Domain\MuscleMemory.Domain.csproj", "{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Infrastructure", "src\MuscleMemory.Infrastructure\MuscleMemory.Infrastructure.csproj", "{DE281E4C-17CB-45B6-91F0-88B6324386A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BECCBD18-3819-4B2F-B402-D1B4FA8FDC11} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
+		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
+		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
+		{DE281E4C-17CB-45B6-91F0-88B6324386A8} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C14A89E-7C37-49DE-99D0-6CE951FC2EF4}
+	EndGlobalSection
+EndGlobal
