@@ -7,6 +7,9 @@ using MuscleMemory.Infrastructure.Seeders;
 using MuscleMemory.Domain.Repositories;
 using MuscleMemory.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
+using MuscleMemory.Infrastructure.Configuration;
+using MuscleMemory.Domain.Interfaces;
+using MuscleMemory.Infrastructure.Storage;
 
 
 namespace MuscleMemory.Infrastructure.Extensions;
@@ -26,5 +29,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IExerciseSeeder, ExerciseSeeder>();
 
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
+
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
