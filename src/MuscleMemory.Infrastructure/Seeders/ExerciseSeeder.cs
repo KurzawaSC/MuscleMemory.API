@@ -1,63 +1,65 @@
-﻿using MuscleMemory.Domain.Entities;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using MuscleMemory.Domain.Constants;
+using MuscleMemory.Domain.Entities;
 using MuscleMemory.Infrastructure.Presistence;
 
 namespace MuscleMemory.Infrastructure.Seeders;
 
-internal class ExerciseSeeder(ExerciseDbContext dbContext) : IExerciseSeeder
+internal class ExerciseSeeder(ExerciseDbContext dbContext,
+    UserManager<User> userManager,
+    IConfiguration configuration) : IExerciseSeeder
 {
+    private readonly string AdminEmail = "admin@admin.com";
     public async Task Seed()
     {
         if (await dbContext.Database.CanConnectAsync())
-        {
-            //if (!dbContext.Exercises.Any())
-            //{
-                //var exercise = GetExercises();
-                //dbContext.Exercises.AddRange(exercise);
-                //await dbContext.SaveChangesAsync();
-            //}
+        { 
+            if (!dbContext.Roles.Any())
+            {
+                var roles = GetRoles();
+                dbContext.Roles.AddRange(roles);
+                await dbContext.SaveChangesAsync();
+            }
+
+            var admin = await userManager.FindByEmailAsync(AdminEmail);
+
+            if(admin == null)
+            {
+                var newAdmin = CreateAdmin();
+
+                await userManager.CreateAsync(newAdmin, configuration["AppSettings:SeedAdminPassword"]!);
+
+                await userManager.AddToRoleAsync(newAdmin, UserRoles.Admin);
+            }
         }
+
+    }
+    private IEnumerable<IdentityRole> GetRoles()
+    {
+        List<IdentityRole> roles =
+            [
+                new (UserRoles.UserPremium)
+                {
+                    NormalizedName = UserRoles.UserPremium.ToUpper()
+                },
+                new (UserRoles.Admin)
+                {
+                    NormalizedName = UserRoles.Admin.ToUpper()
+                },
+            ];
+        return roles;
     }
 
-    private IEnumerable<Exercise> GetExercises()
+    private User CreateAdmin()
     {
-        List<Exercise> exercises = [
-            new()
-                {
-                    Name = "Bench Press",
-                    Record = "0x0"
-                },
-            new()
-            {
-                Name = "Deep Squat",
-                    Record = "0x0"
-            },
-            new()
-            {
-                Name = "Deadlift",
-                    Record = "0x0"
-            },
-            new()
-            {
-                Name = "Bent Over Row",
-                    Record = "0x0"
-            },
-            new()
-            {
-                Name = "Pull up",
-                    Record = "0x0"
-            },
-            new()
-            {
-                Name = "Chin up",
-                    Record = "0x0"
-            },
-            new()
-            {
-                Name = "Over Head Press (OHP)",
-                    Record = "0x0"
-            }
-            ];
+        User admin = new()
+        {
+            UserName = AdminEmail,
+            Email = AdminEmail,
+            UsersExercices = [],
+        };
 
-        return exercises;
+        return admin;
     }
 }

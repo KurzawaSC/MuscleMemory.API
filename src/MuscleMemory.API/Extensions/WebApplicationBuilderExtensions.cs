@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using MuscleMemory.API.Middlewares;
 using Serilog;
 
 namespace MuscleMemory.API.Extensions;
@@ -33,6 +34,8 @@ public static class WebApplicationBuilderExtensions
         });
 
         builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
         builder.Host.UseSerilog((context, configuration) =>
             configuration.ReadFrom.Configuration(context.Configuration));

@@ -1,6 +1,86 @@
 @MuscleMemory.API_HostAddress = https://localhost:7002
+@token = CfDJ8D9A3ke8Dp5Gud4dAM-ciC8th2NxIMvpu-IZlJjOyGBZarmYzivzu6ji35LqsLzqNkqplK8hEYpr1YegHFKlXMMJBE8ZNUDheHA9CW9ixqDoKuhmHM2NK_PKv63XmSdpT2PSZ13A92w07TPQpI3n9t5IxHAoeq8w7v3SIia0gIjWtBQOgkcSp-3kWEkR9RR0ssYy2Qg7jlnJLLoaUpFLCUJRweV-1-JOWhxNvk41Iq5neCH3LtQmXg5OcVtyHHLo1Iq9d3zgoHF72aKFGf4HxsN8lzywc-BZotWIWsgNzrWMIpp0DpNv1yV_9KgAmO8aibH0H8q0ck8XQuYK-1pZDUe6TN_eDg2jDDNHyAkFQgnZEnkrmcBrrsP3wWX9qQ2qrhROpLzssTxch8XgxSswuRNK5mWQFuudaLli4PujHJ60p1vBUrgFFG6N0Y70wSICtjOjFOVqcdMdAtRXNQnn1-VYBQjiWQZtTSQZMu1FZxh_01L3j-ZtUJKmiiV3g0Jga7tUSKcZ_Bs356ZoJWKFLLtMs0f0ayMubsAyASukm6i7pohX0jrtdmxBCI9vPcRs6ykUlOEVprCVBgXPdKkwOKPHYaiS_2fu5cSLngsK2upTSwYalG5V47emWPCGmXtuN1I2__4iCa8FeYb8xRor14oTvV-0IytozHHOGdEQ-aiqRTAjkPYnWnysVe45o2PF4w
+@tokenAdmin = CfDJ8D9A3ke8Dp5Gud4dAM-ciC_nAwkShZYl_P4VF10E96PfQaHccVZM311TqT78lbEqJUvTyM7Rn5VGYdCpzHfGjuDCIXXA4vSHb_xmMzCcr5C2thu95iw41RaY1rOlx4vLNUWJH8iG3RVImgMth66uMhyvikJJJIGap_U3BfRfM_Dvh9RJ40w1E90n2Bx6xA9nvnOkXqybjPxbQOkPFdESYR-9ifY6gwwovgFgCA6wVrVfUoB98n5ZZ6RdpKgfcwb0800p5IlYqEpXOf2q583iziA9VqziVGrwToq5QPxNDnx2KplQX0JybRgZiECZNikkZwaYAtJE_JgI5kif5OYqYpEsBoiqQRnXbWrL8J1XiNPQZ4e72oNiU086j1Y-0oae7uEWVM6RHkcx3PMO_duYX_DcDrx3scFRgbBPVO_U-DJNpdGIbLlPsxFKxEKpuLGyH-rLvSLhNh7cZC5Shz_p1n2SFvbae1E3Ojdk0fbIOUyt132V9OofJRu9YXNvucVzxSSLd5bWMk8luENKwVCohUBCCRyltHVz5gpWPCdOoUnoJ98jBJk_x4OERS3P71ld-Km3F4KTyEjQtLcLgi5Jem9nU84rNWo9YIO1ktDrccy4oBcqSvYK7MVib8tqjgwirbFZdzk-8MiMrRVScDf-MRIr7LG2BYDtld_XG-vuyOxqiLuivxPCCBZvsbpWvG6-_T7QStaZyn6s70Cun7m6dcyhWMou_EUdCTmoVHaAZZILUarh_FrEoPxSs0s_r-uuwmVxrX0klrX9O6y__2Mn0BKYdTW1hCLJl8zCYLCTxBkQ
 
+GET {{MuscleMemory.API_HostAddress}}/api/exercises?searchPhrase=
+Authorization: Bearer {{token}}
+###
 
-GET {{MuscleMemory.API_HostAddress}}/api/exercises
+POST {{MuscleMemory.API_HostAddress}}/api/exercises
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Allachy",
+  "weight": 47.5,
+  "reps": 8
+}
+
+###
+
+POST {{MuscleMemory.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "Password1!"
+}
+
+###
+
+POST {{MuscleMemory.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "Password1!"
+}
+
+###
+
+GET {{MuscleMemory.API_HostAddress}}/api/exercises/d8925775-f47c-4941-c91e-08dc5fc86b39
+Authorization: Bearer {{token}}
+###
+
+PATCH {{MuscleMemory.API_HostAddress}}/api/exercises/2cd3f422-27de-4352-b327-08dc6151ffd9
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Allachs"
+}
+
+###
+
+DELETE {{MuscleMemory.API_HostAddress}}/api/exercises/49cfaa05-6b74-4f87-c0f2-08dc613be629
+Authorization: Bearer {{token}}
+###
+
+POST {{MuscleMemory.API_HostAddress}}/api/identity/userRole/premium
+Content-Type: application/json
+
+{
+  "UserEmail": "test@test.com"
+}
+
+###
+
+POST {{MuscleMemory.API_HostAddress}}/api/identity/userRole/nonpremium
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "UserEmail": "test@test.com"
+}
+
+###
+
+PATCH {{MuscleMemory.API_HostAddress}}/api/identity
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nationality": "Poland"
+}
 
 ###

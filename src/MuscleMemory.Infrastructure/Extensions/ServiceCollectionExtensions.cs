@@ -19,7 +19,9 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<ExerciseDbContext>(options => options.UseSqlServer(connectionString)
         .EnableSensitiveDataLogging());
 
-        services.AddIdentityApiEdnpoints<User>()
+        services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ExerciseDbContext>();
 
         services.AddScoped<IExerciseSeeder, ExerciseSeeder>();
 

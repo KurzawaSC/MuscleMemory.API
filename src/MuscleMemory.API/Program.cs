@@ -4,6 +4,7 @@ using MuscleMemory.Infrastructure.Extensions;
 using MuscleMemory.Infrastructure.Seeders;
 using MuscleMemory.Application.Extensions;
 using MuscleMemory.Domain.Entities;
+using MuscleMemory.API.Middlewares;
 
 try
 {
@@ -21,6 +22,8 @@ try
 
     await seeder.Seed();
 
+    app.UseMiddleware<ErrorHandlingMiddleware>();
+
     // Configure the HTTP request pipeline.
 
     app.UseSerilogRequestLogging();
@@ -33,7 +36,9 @@ try
 
     app.UseHttpsRedirection();
 
-    //app.MapIdentityApi<User>();
+    app.MapGroup("api/identity")
+        .WithTags("Identity")
+        .MapIdentityApi<User>();
 
     app.MapControllers();
 
