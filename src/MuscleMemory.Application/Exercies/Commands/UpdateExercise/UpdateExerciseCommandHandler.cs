@@ -6,12 +6,14 @@ using MuscleMemory.Application.Users;
 using MuscleMemory.Domain.Entities;
 using MuscleMemory.Domain.Exeptions;
 using MuscleMemory.Domain.Repositories;
+using MuscleMemory.Infrastructure.Authorization.Services;
 
 namespace MuscleMemory.Application.Exercies.Commands.UpdateRecord;
 
 public class UpdateExerciseCommandHandler(ILogger<UpdateExerciseCommandHandler> logger,
     IExerciseRepository exerciseRepository,
-    IUserContext userContext) : IRequestHandler<UpdateExerciseCommand>
+    IUserContext userContext,
+    IExerciseAuthorizationService authorizationService) : IRequestHandler<UpdateExerciseCommand>
 {
     public async Task Handle(UpdateExerciseCommand request, CancellationToken cancellationToken)
     {
@@ -22,6 +24,8 @@ public class UpdateExerciseCommandHandler(ILogger<UpdateExerciseCommandHandler> 
         var exercise = await exerciseRepository.GetUserExerciseByIdAsync(request.Id);
 
         if (exercise == null) throw new NotFoundException(nameof(Exercise), request.Id.ToString());
+
+        if (!authorizationService.Authorize(exercise)) throw new ForbidException();
 
         if (request.Name != null) exercise.Name = request.Name;
         if (request.Weight != null && request.Reps != null)

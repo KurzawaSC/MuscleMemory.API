@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing.Constraints;
 using MuscleMemory.Application.Exercies.Commands.CreateExercise;
 using MuscleMemory.Application.Exercies.Commands.DeleteExercise;
 using MuscleMemory.Application.Exercies.Commands.UpdateRecord;
@@ -38,7 +37,7 @@ public class ExerciseController(IMediator mediator) : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateRecord(Guid id,[FromBody] UpdateExerciseCommand command)
+    public async Task<IActionResult> UpdateExercise(Guid id,[FromBody] UpdateExerciseCommand command)
     {
         command.Id = id;
         await mediator.Send(command);

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using MuscleMemory.Infrastructure.Configuration;
 using MuscleMemory.Domain.Interfaces;
 using MuscleMemory.Infrastructure.Storage;
+using MuscleMemory.Infrastructure.Authorization.Services;
 
 
 namespace MuscleMemory.Infrastructure.Extensions;
@@ -32,5 +33,7 @@ public static class ServiceCollectionExtensions
 
         services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
         services.AddScoped<IBlobStorageService, BlobStorageService>();
+
+        services.AddScoped<IExerciseAuthorizationService, ExerciseAuthorizationService>();
     }
 }
