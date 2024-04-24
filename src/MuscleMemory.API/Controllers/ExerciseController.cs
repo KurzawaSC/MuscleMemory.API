@@ -33,7 +33,7 @@ public class ExerciseController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateExercise(CreateExerciseCommand command)
     {
         await mediator.Send(command);
-        return Created();
+        return NoContent();
     }
 
     [HttpPatch("{id}")]
