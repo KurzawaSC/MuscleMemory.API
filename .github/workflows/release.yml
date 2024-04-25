@@ -28,8 +28,8 @@ jobs:
         with:
           name: api-artifact
           path: ${{env.DOTNET_ROOT}}/api
-        
-   deploy-dev:
+          
+  deploy-dev:
     environment: 
       name: 'Dev'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
