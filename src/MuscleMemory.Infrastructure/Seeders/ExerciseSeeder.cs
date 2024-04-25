@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MuscleMemory.Domain.Constants;
 using MuscleMemory.Domain.Entities;
@@ -13,6 +14,11 @@ internal class ExerciseSeeder(ExerciseDbContext dbContext,
     private readonly string AdminEmail = "admin@admin.com";
     public async Task Seed()
     {
+        if (dbContext.Database.GetPendingMigrations().Any())
+        {
+            await dbContext.Database.MigrateAsync();
+        }
+
         if (await dbContext.Database.CanConnectAsync())
         { 
             if (!dbContext.Roles.Any())
