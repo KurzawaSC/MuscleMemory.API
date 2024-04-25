@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Domain", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Infrastructure", "src\MuscleMemory.Infrastructure\MuscleMemory.Infrastructure.csproj", "{DE281E4C-17CB-45B6-91F0-88B6324386A8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.Application.Tests", "tests\MuscleMemory.Application.Tests\MuscleMemory.Application.Tests.csproj", "{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuscleMemory.API.Tests", "tests\MuscleMemory.API.Tests\MuscleMemory.API.Tests.csproj", "{738900DF-D033-4E7E-82A4-B03BF9F29312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE281E4C-17CB-45B6-91F0-88B6324386A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738900DF-D033-4E7E-82A4-B03BF9F29312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738900DF-D033-4E7E-82A4-B03BF9F29312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738900DF-D033-4E7E-82A4-B03BF9F29312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738900DF-D033-4E7E-82A4-B03BF9F29312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +58,8 @@ Global
 		{C9CC0DC0-6C23-4BC0-B16D-7C713BA52421} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
 		{B1B8F6CC-7084-4DB5-919A-AAE2102DDB1C} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
 		{DE281E4C-17CB-45B6-91F0-88B6324386A8} = {61B9D3C9-1D23-4ACC-8FF8-AB2AAC1CEB13}
+		{1B63F2FA-A5ED-4208-B2A0-6A6E137424E4} = {327391C1-1863-4E6A-9E9E-58B1FC986555}
+		{738900DF-D033-4E7E-82A4-B03BF9F29312} = {327391C1-1863-4E6A-9E9E-58B1FC986555}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C14A89E-7C37-49DE-99D0-6CE951FC2EF4}
