@@ -11,7 +11,9 @@ using MuscleMemory.Application.Exercies.Commands.UpdateRecord;
 using MuscleMemory.Application.Exercies.Dtos;
 using MuscleMemory.Application.Users;
 using MuscleMemory.Domain.Entities;
+using MuscleMemory.Domain.Interfaces;
 using MuscleMemory.Domain.Repositories;
+using MuscleMemory.Infrastructure.Seeders;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text;
@@ -24,6 +26,8 @@ public class ExerciseControllerTests : IClassFixture<WebApplicationFactory<Progr
     private readonly WebApplicationFactory<Program> _applicationFactory;
     private readonly Mock<IExerciseRepository> _exerciseRepositoryMock = new();
     private readonly Mock<IUserContext> _userContextMock = new();
+    private readonly Mock<IExerciseSeeder> _exerciseSeederMock = new();
+    private readonly Mock<IBlobStorageService> _blobStorageServiceMock = new();
     public ExerciseControllerTests(WebApplicationFactory<Program> applicationFactory)
     {
         _applicationFactory = applicationFactory.WithWebHostBuilder(builder =>
@@ -35,6 +39,11 @@ public class ExerciseControllerTests : IClassFixture<WebApplicationFactory<Progr
                                             _ => _exerciseRepositoryMock.Object));
                 services.Replace(ServiceDescriptor.Scoped(typeof(IUserContext),
                     _ => _userContextMock.Object));
+
+                services.Replace(ServiceDescriptor.Scoped(typeof(IExerciseSeeder),
+                                            _ => _exerciseSeederMock.Object));
+                services.Replace(ServiceDescriptor.Scoped(typeof(IBlobStorageService),
+                                            _ => _blobStorageServiceMock.Object));
             });
         });
     }
