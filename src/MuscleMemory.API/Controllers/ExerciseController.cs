@@ -32,8 +32,8 @@ public class ExerciseController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateExercise(CreateExerciseCommand command)
     {
-        await mediator.Send(command);
-        return NoContent();
+        var id = await mediator.Send(command);
+        return CreatedAtAction(nameof(GetUserExerciseById), new { id }, null);
     }
 
     [HttpPatch("{id}")]

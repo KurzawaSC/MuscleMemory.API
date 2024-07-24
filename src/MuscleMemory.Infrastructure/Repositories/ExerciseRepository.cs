@@ -23,10 +23,11 @@ internal class ExerciseRepository(ExerciseDbContext dbContext) : IExerciseReposi
         return exercise;
     }
 
-    public async Task Create(Exercise exercise)
+    public async Task<Guid> Create(Exercise exercise)
     {
         await dbContext.AddAsync(exercise);
         await dbContext.SaveChangesAsync();
+        return exercise.Id;
 
     }
 

@@ -3,7 +3,7 @@ using MuscleMemory.Domain.Entities;
 
 namespace MuscleMemory.Application.Exercies.Commands.CreateExercise;
 
-public class CreateExerciseCommand : IRequest
+public class CreateExerciseCommand : IRequest<Guid>
 {
     public string Name { get; set; } = default!;
     public double? Weight { get; set; } = default!;
