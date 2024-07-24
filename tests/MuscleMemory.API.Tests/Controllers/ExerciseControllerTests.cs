@@ -112,7 +112,7 @@ public class ExerciseControllerTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
-    public async Task CreateExercise_ForValidRequest_Returns204NoContent()
+    public async Task CreateExercise_ForValidRequest_Returns201Created()
     {
         //arrange
         var client = _applicationFactory.CreateClient();
@@ -131,7 +131,7 @@ public class ExerciseControllerTests : IClassFixture<WebApplicationFactory<Progr
         var response = await client.PostAsync("api/exercises", content);
 
         //assert
-        response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
     }
 
     [Fact]

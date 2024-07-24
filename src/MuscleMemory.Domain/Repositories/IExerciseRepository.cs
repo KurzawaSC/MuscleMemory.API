@@ -6,7 +6,7 @@ namespace MuscleMemory.Domain.Repositories
     {
         Task<IEnumerable<Exercise>> GetAllUserExerciseAsync(string userId, string? searchPhrase);
         Task<Exercise?> GetUserExerciseByIdAsync(Guid exerciseId);
-        Task Create(Exercise exercise);
+        Task<Guid> Create(Exercise exercise);
         Task DeleteUserExerciseById(Exercise exercise);
         Task SaveChangesAsync();
     }

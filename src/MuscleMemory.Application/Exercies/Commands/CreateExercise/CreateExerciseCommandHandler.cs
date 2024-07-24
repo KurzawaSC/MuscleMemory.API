@@ -11,9 +11,9 @@ namespace MuscleMemory.Application.Exercies.Commands.CreateExercise;
 public class CreateExerciseCommandHandler(ILogger<CreateExerciseCommandHandler> logger,
     IMapper mapper,
     IExerciseRepository exerciseRepository,
-    IUserContext userContext) : IRequestHandler<CreateExerciseCommand>
+    IUserContext userContext) : IRequestHandler<CreateExerciseCommand, Guid>
 {
-    public async Task Handle(CreateExerciseCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateExerciseCommand request, CancellationToken cancellationToken)
     {
         var currentUser = userContext.GetCurrentUser()!;
 
@@ -22,6 +22,7 @@ public class CreateExerciseCommandHandler(ILogger<CreateExerciseCommandHandler> 
         var exercise = mapper.Map<Exercise>(request);
         exercise.OwnerId = currentUser.Id;
 
-        await exerciseRepository.Create(exercise);
+        var id = await exerciseRepository.Create(exercise);
+        return id;
     }
 }
